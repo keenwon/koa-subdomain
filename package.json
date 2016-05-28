@@ -1,6 +1,6 @@
 {
   "name": "koa-subdomain",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple and lightweight Koa middleware to handle multilevel and wildcard subdomains",
   "main": "lib/subdomain.js",
   "scripts": {
@@ -9,6 +9,16 @@
   "author": {
     "name": "keenwon",
     "email": "semanwmj@yeah.net"
+  },
+  "keywords": [
+    "koa",
+    "domain",
+    "subdomain",
+    "middleware"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keenwon/koa-subdomain.git"
   },
   "license": "MIT",
   "devDependencies": {
