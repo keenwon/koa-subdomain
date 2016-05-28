@@ -62,3 +62,12 @@ subdomain.use('one.*', router8);
 app.use(subdomain.routes());
 app.listen(8888);
 ```
+
+## Run test
+
+```shell
+git clone https://github.com/keenwon/koa-subdoamin.git
+cd koa-subdomain
+npm install
+npm test
+```
