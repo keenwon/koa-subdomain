@@ -66,7 +66,7 @@ app.listen(8888);
 ## Run test
 
 ```shell
-git clone https://github.com/keenwon/koa-subdoamin.git
+git clone https://github.com/keenwon/koa-subdomain.git
 cd koa-subdomain
 npm install
 npm test
