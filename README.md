@@ -1,6 +1,6 @@
 # koa-subdomain
 
-[![Build Status](https://secure.travis-ci.org/keenwon/jqPaginator.png?branch=master)](http://secure.travis-ci.org/keenwon/jqPaginator)
+[![Build Status](https://secure.travis-ci.org/keenwon/koa-subdomain.png?branch=master)](http://secure.travis-ci.org/keenwon/koa-domain)
 
 Simple and lightweight Koa middleware to handle multilevel and wildcard subdomains.
 
