@@ -1,11 +1,22 @@
 {
   "name": "koa-subdomain",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Simple and lightweight Koa middleware to handle multilevel and wildcard subdomains",
+  "main": "lib/subdomain.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/**/*.spec.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "koa": "^1.2.0",
+    "koa-router": "^5.4.0",
+    "mocha": "^2.5.3",
+    "request": "^2.72.0"
+  },
+  "dependencies": {
+    "debug": "^2.2.0"
+  }
 }
