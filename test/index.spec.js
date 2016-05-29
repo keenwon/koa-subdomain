@@ -12,7 +12,7 @@ const chaiAsPromised = require('chai-as-promised');
 chai.should();
 chai.use(chaiAsPromised);
 
-describe('# 测试路由匹配', function () {
+describe('测试路由匹配', function () {
 
     beforeEach(function () {
         var app = koa();
@@ -28,7 +28,7 @@ describe('# 测试路由匹配', function () {
         this.server.close();
     });
 
-    describe('## 测试一级子域名', function () {
+    describe('# 测试一级子域名', function () {
 
         it('match one.example.com', function () {
             return request('two.example.com')
@@ -46,7 +46,7 @@ describe('# 测试路由匹配', function () {
 
     });
 
-    describe('## 测试二级子域名', function () {
+    describe('# 测试二级子域名', function () {
 
         it('match a.one.example.com', function () {
             return request('a.one.example.com')
@@ -64,7 +64,7 @@ describe('# 测试路由匹配', function () {
 
     });
 
-    describe('## 测试根域名', function () {
+    describe('# 测试根域名', function () {
 
         it('match example.com', function () {
             return request('example.com')
@@ -75,7 +75,7 @@ describe('# 测试路由匹配', function () {
 
     });
 
-    describe('## 测试一级模糊匹配', function () {
+    describe('# 测试一级模糊匹配', function () {
 
         it('match *.example.com', function () {
             return request('test1.example.com')
@@ -93,7 +93,7 @@ describe('# 测试路由匹配', function () {
 
     });
 
-    describe('## 测试二级模糊匹配', function () {
+    describe('# 测试二级模糊匹配', function () {
 
         it('match *.one.example.com', function () {
             return request('test1.one.example.com')
@@ -125,7 +125,7 @@ describe('# 测试路由匹配', function () {
 
     });
 
-    describe('## 测试Not Found', function () {
+    describe('# 测试Not Found', function () {
 
         it('match a.b.c.example.com', function () {
             return request('a.b.c.example.com')
@@ -138,7 +138,7 @@ describe('# 测试路由匹配', function () {
 
 });
 
-describe('# 测试异常处理', function () {
+describe('测试异常处理', function () {
 
     it('测试sub不合法', function () {
         var app = koa(),
@@ -200,6 +200,68 @@ describe('# 测试异常处理', function () {
             var a = new A();
             s.use('*', a);
         }).should.throw();
+    });
+
+});
+
+describe('测试后续middleware的this', function () {
+
+    /**
+     * 很多middleware需要通过this获取request等上下文信息
+     * 所以koa-subdomain比较关注这点
+     */
+
+    afterEach(function () {
+        this.server.close();
+    });
+
+    it('router中的this', function (done) {
+        var app = koa(),
+            s = subdomain(),
+            r = router();
+
+        app.subdomainOffset = 2;
+        app.proxy = true;
+
+        r.get('/', function *(next) {
+            yield next;
+            (this.app instanceof koa).should.equal(true);
+            done();
+        });
+
+        s.use('one', r.routes());
+
+        app.use(s.routes());
+
+        this.server = app.listen(8888);
+
+        request('one.example.com');
+    });
+
+    it('后续middleware的this', function (done) {
+        var app = koa(),
+            s = subdomain(),
+            r = router();
+
+        app.subdomainOffset = 2;
+        app.proxy = true;
+
+        r.use('/', function *() {
+        });
+
+        s.use('one', r.routes());
+
+        app.use(s.routes());
+
+        app.use(function *(next) {
+            yield next;
+            (this.app instanceof koa).should.equal(true);
+            done();
+        });
+
+        this.server = app.listen(8888);
+
+        request('one.example.com');
     });
 
 });
