@@ -1,6 +1,6 @@
 # koa-subdomain
 
-[![Build Status](https://secure.travis-ci.org/keenwon/koa-subdomain.png?branch=master)](http://secure.travis-ci.org/keenwon/koa-domain)
+[![NPM version][npm-image]][npm-url][![build status][travis-image]][travis-url][![Test coverage][coveralls-image]][coveralls-url]
 
 Simple and lightweight Koa middleware to handle multilevel and wildcard subdomains.
 
