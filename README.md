@@ -76,7 +76,7 @@ npm test
 ```
 
 [npm-image]: https://img.shields.io/npm/v/koa-subdomain.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/koa-domain
+[npm-url]: https://www.npmjs.com/package/koa-subdomain
 [travis-image]: https://img.shields.io/travis/keenwon/koa-subdomain.svg?style=flat-square
 [travis-url]: https://travis-ci.org/keenwon/koa-subdomain
 [coveralls-image]: https://img.shields.io/coveralls/keenwon/koa-subdomain.svg?style=flat-square
