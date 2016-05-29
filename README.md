@@ -74,3 +74,10 @@ cd koa-subdomain
 npm install
 npm test
 ```
+
+[npm-image]: https://img.shields.io/npm/v/koa-subdomain.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/koa-domain
+[travis-image]: https://img.shields.io/travis/keenwon/koa-subdomain.svg?style=flat-square
+[travis-url]: https://travis-ci.org/keenwon/koa-subdomain
+[coveralls-image]: https://img.shields.io/coveralls/keenwon/koa-subdomain.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/github/keenwon/koa-subdomain?branch=master
