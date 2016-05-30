@@ -136,6 +136,17 @@ describe('测试路由匹配', function () {
 
     });
 
+    describe('# 测试端口号对subdomain的影响', function () {
+
+        it('match one.example.com:8080', function () {
+            return request('one.example.com:8080')
+                .should
+                .eventually
+                .equal('one.example.com');
+        });
+
+    });
+
 });
 
 describe('测试异常处理', function () {
