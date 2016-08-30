@@ -31,10 +31,10 @@ describe('测试路由匹配', function () {
     describe('# 测试一级子域名', function () {
 
         it('match one.example.com', function () {
-            return request('two.example.com')
+            return request('one.example.com')
                 .should
                 .eventually
-                .equal('two.example.com');
+                .equal('one.example.com');
         });
 
         it('match two.example.com', function () {
