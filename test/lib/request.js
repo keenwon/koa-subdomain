@@ -4,7 +4,7 @@ const req = require('request');
 
 function request(uri) {
 
-    var options = {
+    let options = {
         'headers': {
             'X-Forwarded-Host': uri
         }

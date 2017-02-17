@@ -2,9 +2,9 @@
 
 const lint = require('mocha-eslint');
 
-var paths = ['lib/subdomain.js'];
+let paths = ['lib/subdomain.js'];
 
-var options = {
+let options = {
     formatter: 'compact',
     alwaysWarn: false,
     timeout: 5000,

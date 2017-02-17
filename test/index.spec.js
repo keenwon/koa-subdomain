@@ -1,9 +1,9 @@
 'use strict';
 
-const koa = require('koa');
-const router = require('koa-router');
+const Koa = require('koa');
+const Router = require('koa-router');
 const request = require('./lib/request');
-const subdomain = require('../lib/subdomain');
+const Subdomain = require('../lib/subdomain');
 const subdomainRouter = require('./lib/subdomainRouter');
 
 const mocha = require('mocha');
@@ -15,7 +15,7 @@ chai.use(chaiAsPromised);
 describe('测试路由匹配', function () {
 
     beforeEach(function () {
-        var app = koa();
+        let app = new Koa();
 
         app.subdomainOffset = 2;
         app.proxy = true;
@@ -152,14 +152,14 @@ describe('测试路由匹配', function () {
 describe('测试异常处理', function () {
 
     it('测试sub不合法', function () {
-        var app = koa(),
-            s = subdomain(),
-            r = router();
+        let app = new Koa(),
+            s = new Subdomain(),
+            r = new Router();
 
         app.subdomainOffset = 2;
         app.proxy = true;
 
-        r.use('/', function *() {
+        r.use('/', async() => {
         });
 
         (function () {
@@ -180,8 +180,8 @@ describe('测试异常处理', function () {
     });
 
     it('测试router不合法', function () {
-        var app = koa(),
-            s = subdomain();
+        let app = new Koa(),
+            s = new Subdomain();
 
         app.subdomainOffset = 2;
         app.proxy = true;
@@ -196,20 +196,6 @@ describe('测试异常处理', function () {
 
         (function () {
             s.use('*', false);
-        }).should.throw();
-
-        (function () {
-            s.use('*', function () {
-            });
-        }).should.throw();
-
-        (function () {
-            function A() {
-            }
-
-            A.prototype.constructor = null;
-            var a = new A();
-            s.use('*', a);
         }).should.throw();
     });
 
@@ -227,16 +213,16 @@ describe('测试后续middleware的this', function () {
     });
 
     it('router中的this', function (done) {
-        var app = koa(),
-            s = subdomain(),
-            r = router();
+        let app = new Koa(),
+            s = new Subdomain(),
+            r = new Router();
 
         app.subdomainOffset = 2;
         app.proxy = true;
 
-        r.get('/', function *(next) {
-            yield next;
-            (this.app instanceof koa).should.equal(true);
+        r.get('/', async(ctx, next) => {
+            await next;
+            (ctx.app instanceof Koa).should.equal(true);
             done();
         });
 
@@ -250,23 +236,23 @@ describe('测试后续middleware的this', function () {
     });
 
     it('后续middleware的this', function (done) {
-        var app = koa(),
-            s = subdomain(),
-            r = router();
+        let app = new Koa(),
+            s = new Subdomain(),
+            r = new Router();
 
         app.subdomainOffset = 2;
         app.proxy = true;
 
-        r.use('/', function *() {
+        r.use('/', async() => {
         });
 
         s.use('one', r.routes());
 
         app.use(s.routes());
 
-        app.use(function *(next) {
-            yield next;
-            (this.app instanceof koa).should.equal(true);
+        app.use(async (ctx, next) => {
+            await next;
+            (ctx.app instanceof Koa).should.equal(true);
             done();
         });
 

@@ -1,51 +1,44 @@
 'use strict';
 
-const subdomain = require('../../lib/subdomain')();
-const router = require('koa-router');
+const Subdomain = require('../../lib/subdomain');
+const subdomain = new Subdomain();
+const Router = require('koa-router');
 
 module.exports = subdomain;
 
 // one.example.com
-var router1 = routerFactory('one.example.com').routes();
-subdomain.use('one', router1);
+subdomain.use('one', routerFactory('one.example.com'));
 
 // two.example.com
-var router2 = routerFactory('two.example.com').routes();
-subdomain.use('two', router2);
+subdomain.use('two', routerFactory('two.example.com'));
 
 
 // a.one.example.com
-var router3 = routerFactory('a.one.example.com').routes();
-subdomain.use('a.one', router3);
+subdomain.use('a.one', routerFactory('a.one.example.com'));
 
 // b.one.example.com
-var router4 = routerFactory('b.one.example.com').routes();
-subdomain.use('b.one', router4);
+subdomain.use('b.one', routerFactory('b.one.example.com'));
 
 
 // example.com
-var router5 = routerFactory('example.com').routes();
-subdomain.use('', router5);
+subdomain.use('', routerFactory('example.com'));
 
 
 // *.example.com
-var router6 = routerFactory('*.example.com').routes();
-subdomain.use('*', router6);
+subdomain.use('*', routerFactory('*.example.com'));
 
 // *.one.example.com
-var router7 = routerFactory('*.one.example.com').routes();
-subdomain.use('*.one', router7);
+subdomain.use('*.one', routerFactory('*.one.example.com'));
 
 // one.*.example.com
-var router8 = routerFactory('one.*.example.com').routes();
-subdomain.use('one.*', router8);
+subdomain.use('one.*', routerFactory('one.*.example.com'));
 
 function routerFactory(body) {
-    var r = router();
+    let r = new Router();
 
-    r.get('/', function *() {
-        this.body = body;
+    r.get('/', async ctx => {
+        ctx.body = body;
     });
 
-    return r;
-};
+    return r.routes();
+}
