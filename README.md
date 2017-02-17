@@ -103,8 +103,8 @@ app.listen(8888);
 ```shell
 git clone https://github.com/keenwon/koa-subdomain.git
 cd koa-subdomain
-npm install
-npm test
+yarn install
+yarn test
 ```
 
 [npm-image]: https://img.shields.io/npm/v/koa-subdomain.svg?style=flat-square
