@@ -68,6 +68,36 @@ app.use(subdomain.routes());
 app.listen(8888);
 ```
 
+## koa2
+
+Install:
+
+```shell
+npm install koa-subdomain@next --save
+```
+
+Usage:
+
+```javascript
+const Koa = require('koa');
+const Subdomain = require('koa-subdomain');
+const Router = require('koa-router');
+
+const app = new Koa();
+const subdomain = new Subdomain();
+const router = new Router();
+
+router.get('/', async ctx => {
+	ctx.body = 'one';
+});
+
+// one.example.com
+subdomain.use('one', router.routes());
+
+app.use(subdomain.routes());
+app.listen(8888);
+```
+
 ## Run test
 
 ```shell
