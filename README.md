@@ -19,12 +19,16 @@ npm install koa-subdomain --save
 use with [koa-router](https://github.com/alexmingoia/koa-router):
 
 ```javascript
-const app = require('koa')();
-const subdomain = require('koa-subdomain')();
-const router = require('koa-router')();
+const Koa = require('koa');
+const Subdomain = require('koa-subdomain');
+const Router = require('koa-router');
 
-router.get('/', function * () {
-	this.body = 'one';
+const app = new Koa();
+const subdomain = new Subdomain();
+const router = new Router();
+
+router.get('/', async ctx => {
+	ctx.body = 'one';
 });
 
 // one.example.com
@@ -68,27 +72,23 @@ app.use(subdomain.routes());
 app.listen(8888);
 ```
 
-## koa2
+## koa1
 
 Install:
 
 ```shell
-npm install koa-subdomain@next --save
+npm install koa-subdomain@1 --save
 ```
 
 Usage:
 
 ```javascript
-const Koa = require('koa');
-const Subdomain = require('koa-subdomain');
-const Router = require('koa-router');
+const app = require('koa')();
+const subdomain = require('koa-subdomain')();
+const router = require('koa-router')();
 
-const app = new Koa();
-const subdomain = new Subdomain();
-const router = new Router();
-
-router.get('/', async ctx => {
-	ctx.body = 'one';
+router.get('/', function * () {
+	this.body = 'one';
 });
 
 // one.example.com
