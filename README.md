@@ -50,11 +50,9 @@ subdomain.use('one', router1);
 // two.example.com
 subdomain.use('two', router2);
 
-// a.one.example.com
-subdomain.use('a.one', router3);
-
-// b.one.example.com
-subdomain.use('b.one', router4);
+subdomain
+  .use('a.one', router3)  // a.one.example.com
+  .use('b.one', router4); // b.one.example.com
 
 // example.com
 subdomain.use('', router5);
