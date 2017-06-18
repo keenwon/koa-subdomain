@@ -23,15 +23,10 @@ subdomain.use('b.one', routerFactory('b.one.example.com'));
 // example.com
 subdomain.use('', routerFactory('example.com'));
 
-
-// *.example.com
-subdomain.use('*', routerFactory('*.example.com'));
-
-// *.one.example.com
-subdomain.use('*.one', routerFactory('*.one.example.com'));
-
-// one.*.example.com
-subdomain.use('one.*', routerFactory('one.*.example.com'));
+subdomain
+    .use('*', routerFactory('*.example.com')) // *.example.com
+    .use('*.one', routerFactory('*.one.example.com')) // *.one.example.com
+    .use('one.*', routerFactory('one.*.example.com')); // one.*.example.com
 
 function routerFactory(body) {
     let r = new Router();
