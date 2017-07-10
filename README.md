@@ -1,6 +1,6 @@
 # koa-subdomain
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![gemnasium deps][gemnasium-image]][gemnasium-url] [![npm download][download-image]][download-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![npm download][download-image]][download-url]
 
 Simple and lightweight Koa middleware to handle multilevel and wildcard subdomains.
 
@@ -111,7 +111,5 @@ yarn test
 [travis-url]: https://travis-ci.org/keenwon/koa-subdomain
 [coveralls-image]: https://img.shields.io/coveralls/keenwon/koa-subdomain.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/github/keenwon/koa-subdomain?branch=master
-[gemnasium-image]: http://img.shields.io/gemnasium/keenwon/koa-subdomain.svg?style=flat-square
-[gemnasium-url]: https://gemnasium.com/keenwon/koa-subdomain
 [download-image]: https://img.shields.io/npm/dm/koa-subdomain.svg?style=flat-square
 [download-url]: https://npmjs.org/package/koa-subdomain
