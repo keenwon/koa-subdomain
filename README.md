@@ -70,6 +70,17 @@ app.use(subdomain.routes());
 app.listen(8888);
 ```
 
+**Note**: Koa has a `subdomainOffset` setting (2, by default), so the domain of the app is assumed to be the last two parts of the host. Here is an example when it is useful: if your app domain is `localhost:3000`, you need to change `subdomainOffset` to 1 for proper subdomain detection.
+
+```js
+const app = new Koa();
+
+app.subdomainOffset = 1
+
+// one.localhost:3000
+subdomain.use('one', router);
+```
+
 ## koa1
 
 Install:
