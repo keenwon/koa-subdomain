@@ -1,6 +1,11 @@
 # koa-subdomain
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![npm download][download-image]][download-url]
+[![NPM version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
+[![npm download][download-image]][download-url]
+[![Dependencies Status][dependencies-image]][dependencies-url]
+[![Devdependencies Status][devdependencies-image]][devdependencies-url]
 
 Simple and lightweight Koa middleware to handle multilevel and wildcard subdomains.
 
@@ -140,11 +145,15 @@ yarn install
 yarn test
 ```
 
-[npm-image]: https://img.shields.io/npm/v/koa-subdomain.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/koa-subdomain.svg?style=flat-square&maxAge=3600
 [npm-url]: https://www.npmjs.com/package/koa-subdomain
-[travis-image]: https://img.shields.io/travis/keenwon/koa-subdomain.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/keenwon/koa-subdomain.svg?style=flat-square&maxAge=3600
 [travis-url]: https://travis-ci.org/keenwon/koa-subdomain
-[coveralls-image]: https://img.shields.io/coveralls/keenwon/koa-subdomain.svg?style=flat-square
+[coveralls-image]: https://img.shields.io/coveralls/keenwon/koa-subdomain.svg?style=flat-square&maxAge=3600
 [coveralls-url]: https://coveralls.io/github/keenwon/koa-subdomain?branch=master
-[download-image]: https://img.shields.io/npm/dm/koa-subdomain.svg?style=flat-square
+[download-image]: https://img.shields.io/npm/dm/koa-subdomain.svg?style=flat-square&maxAge=3600
 [download-url]: https://npmjs.org/package/koa-subdomain
+[dependencies-image]: https://david-dm.org/keenwon/koa-subdomain.svg
+[dependencies-url]: https://david-dm.org/keenwon/koa-subdomain
+[devdependencies-image]: https://david-dm.org/keenwon/koa-subdomain/dev-status.svg
+[devdependencies-url]: https://david-dm.org/keenwon/koa-subdomain?type=dev
