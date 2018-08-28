@@ -33,7 +33,7 @@ const subdomain = new Subdomain();
 const router = new Router();
 
 router.get('/', async ctx => {
-	ctx.body = 'one';
+  ctx.body = 'one';
 });
 
 // one.example.com
@@ -88,8 +88,8 @@ const router = new Router();
 
 // get test.example.com
 router.get('/', async ctx => {
-    // in body will stand test
-    ctx.body = ctx.state.wildcardSubdomain;
+  // in body will stand test
+  ctx.body = ctx.state.wildcardSubdomain;
 });
 
 // *.example.com
@@ -126,7 +126,7 @@ const subdomain = require('koa-subdomain')();
 const router = require('koa-router')();
 
 router.get('/', function * () {
-	this.body = 'one';
+  this.body = 'one';
 });
 
 // one.example.com
@@ -141,8 +141,8 @@ app.listen(8888);
 ```shell
 git clone https://github.com/keenwon/koa-subdomain.git
 cd koa-subdomain
-yarn install
-yarn test
+npm install
+npm test
 ```
 
 [npm-image]: https://img.shields.io/npm/v/koa-subdomain.svg?style=flat-square&maxAge=3600
