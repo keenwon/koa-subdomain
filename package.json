@@ -4,7 +4,9 @@
   "description": "Simple and lightweight Koa middleware to handle multilevel and wildcard subdomains",
   "main": "lib/subdomain.js",
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text mocha \"test/**/*.js\" && nyc report --reporter=text-lcov | coveralls"
+    "test:lint": "standard \"lib/**/*.js\" \"test/**/*.js\" --fix --verbose --env mocha",
+    "test:unit": "nyc --reporter=html --reporter=text mocha \"test/**/*.js\" && nyc report --reporter=text-lcov | coveralls",
+    "test": "npm run test:lint && npm run test:unit"
   },
   "author": {
     "name": "keenwon",
@@ -31,9 +33,9 @@
     "koa": "^2.5.2",
     "koa-router": "^7.4.0",
     "mocha": "^5.2.0",
-    "mocha-eslint": "^4.1.0",
     "nyc": "^13.0.1",
-    "request": "^2.72.0"
+    "request": "^2.72.0",
+    "standard": "^11.0.1"
   },
   "dependencies": {
     "debug": "^3.1.0"
