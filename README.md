@@ -70,6 +70,30 @@ app.use(subdomain.routes());
 app.listen(8888);
 ```
 
+Wildcard subdomain will be accessible under `wildcardSubdomain` in the state of koa context.
+
+```javascript
+const Koa = require('koa');
+const Subdomain = require('koa-subdomain');
+const Router = require('koa-router');
+
+const app = new Koa();
+const subdomain = new Subdomain();
+const router = new Router();
+
+// get test.example.com
+router.get('/', async ctx => {
+    // in body will stand test
+    ctx.body = ctx.state.wildcardSubdomain;
+});
+
+// *.example.com
+subdomain.use('*', router.routes());
+
+app.use(subdomain.routes());
+app.listen(8888);
+```
+
 **Note**: Koa has a `subdomainOffset` setting (2, by default), so the domain of the app is assumed to be the last two parts of the host. Here is an example when it is useful: if your app domain is `localhost:3000`, you need to change `subdomainOffset` to 1 for proper subdomain detection.
 
 ```js
