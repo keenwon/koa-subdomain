@@ -4,7 +4,9 @@
   "description": "Simple and lightweight Koa middleware to handle multilevel and wildcard subdomains",
   "main": "lib/subdomain.js",
   "scripts": {
-    "test": "node --harmony ./node_modules/.bin/istanbul cover _mocha test/**/*.spec.js -- --harmony -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "test:lint": "standard \"lib/**/*.js\" \"test/**/*.js\" --fix --verbose --env mocha",
+    "test:unit": "nyc --reporter=html --reporter=text mocha \"test/**/*.js\" && nyc report --reporter=text-lcov | coveralls",
+    "test": "npm run test:lint && npm run test:unit"
   },
   "author": {
     "name": "keenwon",
@@ -25,18 +27,18 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-as-promised": "^5.3.0",
-    "coveralls": "^2.11.9",
-    "istanbul": "^0.4.3",
-    "koa": "next",
-    "koa-router": "next",
-    "mocha": "^2.5.3",
-    "mocha-eslint": "^2.0.2",
-    "request": "^2.72.0"
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "coveralls": "^3.0.2",
+    "koa": "^2.5.2",
+    "koa-router": "^7.4.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
+    "request": "^2.72.0",
+    "standard": "^12.0.0"
   },
   "dependencies": {
-    "debug": "^2.2.0"
+    "debug": "^3.1.0"
   },
   "peerDependencies": {
     "koa": "^2"

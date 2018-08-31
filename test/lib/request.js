@@ -1,24 +1,23 @@
-'use strict';
+'use strict'
 
-const req = require('request');
+const req = require('request')
 
-function request(uri) {
+function request (uri) {
+  let options = {
+    'headers': {
+      'X-Forwarded-Host': uri
+    }
+  }
 
-    let options = {
-        'headers': {
-            'X-Forwarded-Host': uri
-        }
-    };
+  return new Promise(function (resolve, reject) {
+    req.get('http://localhost:8888', options, function (error, response, body) {
+      if (error) {
+        return reject(error)
+      }
 
-    return new Promise(function (resolve, reject) {
-        req.get('http://localhost:8888', options, function (error, response, body) {
-            if (error) {
-                return reject(error);
-            }
-
-            return resolve(body);
-        });
-    });
+      return resolve(body)
+    })
+  })
 }
 
-module.exports = request;
+module.exports = request
