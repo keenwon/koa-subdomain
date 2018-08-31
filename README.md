@@ -70,7 +70,7 @@ app.use(subdomain.routes());
 app.listen(8888);
 ```
 
-Wildcard subdomain will be accessible under `wildcardSubdomain` in the state of koa context.
+Wildcard subdomains will be accessible under `wildcardSubdomains` in the state of koa context.
 
 ```javascript
 const Koa = require('koa');
@@ -84,11 +84,18 @@ const router = new Router();
 // get test.example.com
 router.get('/', async ctx => {
     // in body will stand test
-    ctx.body = ctx.state.wildcardSubdomain;
+    ctx.body = ctx.state.wildcardSubdomains[0];
+});
+
+// get foo.bar.example.com
+router.get('/', async ctx => {
+    // in body will stand foo bar
+    ctx.body = `${ctx.state.wildcardSubdomains[0]} ${ctx.state.wildcardSubdomains[1]}`;
 });
 
 // *.example.com
 subdomain.use('*', router.routes());
+subdomain.use('*.*', router.routes());
 
 app.use(subdomain.routes());
 app.listen(8888);
