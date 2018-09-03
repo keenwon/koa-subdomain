@@ -30,7 +30,10 @@ function routerFactory (body) {
   let r = new Router()
 
   r.get('/', async ctx => {
-    ctx.body = body
+    ctx.body = JSON.stringify({
+      domain: body,
+      wildcardSubdomains: ctx.state.wildcardSubdomains
+    })
   })
 
   return r.routes()

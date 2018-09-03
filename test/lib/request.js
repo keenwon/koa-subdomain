@@ -15,7 +15,7 @@ function request (uri) {
         return reject(error)
       }
 
-      return resolve(body)
+      return resolve(JSON.parse(body))
     })
   })
 }
