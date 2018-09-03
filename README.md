@@ -84,23 +84,24 @@ const Router = require('koa-router');
 
 const app = new Koa();
 const subdomain = new Subdomain();
-const router = new Router();
+const router1 = new Router();
+const router2 = new Router();
 
 // get test.example.com
-router.get('/', async ctx => {
-    // in body will stand test
+router1.get('/', async ctx => {
+    // in body will stand "test"
     ctx.body = ctx.state.wildcardSubdomains[0];
 });
 
 // get foo.bar.example.com
-router.get('/', async ctx => {
-    // in body will stand foo bar
-    ctx.body = `${ctx.state.wildcardSubdomains[0]} ${ctx.state.wildcardSubdomains[1]}`;
+router2.get('/', async ctx => {
+    // in body will stand "foo bar"
+    ctx.body = ctx.state.wildcardSubdomains.join(' ');
 });
 
 // *.example.com
-subdomain.use('*', router.routes());
-subdomain.use('*.*', router.routes());
+subdomain.use('*', router1.routes());
+subdomain.use('*.*', router2.routes());
 
 app.use(subdomain.routes());
 app.listen(8888);
