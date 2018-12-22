@@ -3,3 +3,7 @@
 node_modules/
 coverage/
 .nyc_output/
+
+# ELint (https://github.com/keenwon/elint)
+.eslintrc.js
+.stylelintrc.js
