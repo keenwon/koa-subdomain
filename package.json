@@ -7,7 +7,7 @@
     "test:lint": "eslint \"lib/**/*.js\" \"test/**/*.js\" --fix",
     "test:unit": "nyc --reporter=html --reporter=text mocha \"test/**/*.js\" && nyc report --reporter=text-lcov | coveralls",
     "test": "npm run test:lint && npm run test:unit",
-    "beforecommit": "npm run test"
+    "beforecommit": "elint lint commit && npm run test"
   },
   "author": {
     "name": "keenwon",
