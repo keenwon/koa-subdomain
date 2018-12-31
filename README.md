@@ -161,7 +161,7 @@ npm test
 [coveralls-url]: https://coveralls.io/github/keenwon/koa-subdomain?branch=master
 [download-image]: https://img.shields.io/npm/dm/koa-subdomain.svg?style=flat-square&maxAge=3600
 [download-url]: https://npmjs.org/package/koa-subdomain
-[dependencies-image]: https://david-dm.org/keenwon/koa-subdomain.svg
+[dependencies-image]: https://img.shields.io/david/keenwon/koa-subdomain.svg?maxAge=3600&style=flat-square
 [dependencies-url]: https://david-dm.org/keenwon/koa-subdomain
-[devdependencies-image]: https://david-dm.org/keenwon/koa-subdomain/dev-status.svg
+[devdependencies-image]: https://img.shields.io/david/dev/keenwon/koa-subdomain.svg?maxAge=3600&style=flat-square
 [devdependencies-url]: https://david-dm.org/keenwon/koa-subdomain?type=dev
