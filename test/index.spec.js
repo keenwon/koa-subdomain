@@ -3,6 +3,7 @@
 const Koa = require('koa')
 const Router = require('koa-router')
 const request = require('./lib/request')
+const getPort = require('./lib/getPort')
 const Subdomain = require('../lib/subdomain')
 const subdomainRouter = require('./lib/subdomainRouter')
 
@@ -12,7 +13,7 @@ chai.should()
 chai.use(chaiAsPromised)
 
 describe('测试路由匹配', function () {
-  beforeEach(function () {
+  beforeEach(function (done) {
     let app = new Koa()
 
     app.subdomainOffset = 2
@@ -30,7 +31,10 @@ describe('测试路由匹配', function () {
       return next()
     })
 
-    this.server = app.listen(8888)
+    getPort(true).then(port => {
+      this.server = app.listen(port)
+      done()
+    })
   })
 
   afterEach(function () {
@@ -44,11 +48,7 @@ describe('测试路由匹配', function () {
         wildcardSubdomains: []
       }
 
-      return request('one.example.com')
-        .should
-        .eventually
-        .deep
-        .equal(expect)
+      return request('one.example.com').should.eventually.deep.equal(expect)
     })
 
     it('match two.example.com', function () {
@@ -57,11 +57,7 @@ describe('测试路由匹配', function () {
         wildcardSubdomains: []
       }
 
-      return request('two.example.com')
-        .should
-        .eventually
-        .deep
-        .equal(expect)
+      return request('two.example.com').should.eventually.deep.equal(expect)
     })
   })
 
@@ -72,11 +68,7 @@ describe('测试路由匹配', function () {
         wildcardSubdomains: []
       }
 
-      return request('a.one.example.com')
-        .should
-        .eventually
-        .deep
-        .equal(expect)
+      return request('a.one.example.com').should.eventually.deep.equal(expect)
     })
 
     it('match b.one.example.com', function () {
@@ -85,11 +77,7 @@ describe('测试路由匹配', function () {
         wildcardSubdomains: []
       }
 
-      return request('b.one.example.com')
-        .should
-        .eventually
-        .deep
-        .equal(expect)
+      return request('b.one.example.com').should.eventually.deep.equal(expect)
     })
   })
 
@@ -100,11 +88,7 @@ describe('测试路由匹配', function () {
         wildcardSubdomains: []
       }
 
-      return request('example.com')
-        .should
-        .eventually
-        .deep
-        .equal(expect)
+      return request('example.com').should.eventually.deep.equal(expect)
     })
   })
 
@@ -115,11 +99,7 @@ describe('测试路由匹配', function () {
         wildcardSubdomains: ['test1']
       }
 
-      return request('test1.example.com')
-        .should
-        .eventually
-        .deep
-        .equal(expect)
+      return request('test1.example.com').should.eventually.deep.equal(expect)
     })
 
     it('match *.example.com', function () {
@@ -128,11 +108,7 @@ describe('测试路由匹配', function () {
         wildcardSubdomains: ['test2']
       }
 
-      return request('test2.example.com')
-        .should
-        .eventually
-        .deep
-        .equal(expect)
+      return request('test2.example.com').should.eventually.deep.equal(expect)
     })
   })
 
@@ -143,11 +119,7 @@ describe('测试路由匹配', function () {
         wildcardSubdomains: ['test1']
       }
 
-      return request('test1.one.example.com')
-        .should
-        .eventually
-        .deep
-        .equal(expect)
+      return request('test1.one.example.com').should.eventually.deep.equal(expect)
     })
 
     it('match *.one.example.com', function () {
@@ -156,11 +128,7 @@ describe('测试路由匹配', function () {
         wildcardSubdomains: ['test2']
       }
 
-      return request('test2.one.example.com')
-        .should
-        .eventually
-        .deep
-        .equal(expect)
+      return request('test2.one.example.com').should.eventually.deep.equal(expect)
     })
 
     it('match one.*.example.com', function () {
@@ -169,11 +137,7 @@ describe('测试路由匹配', function () {
         wildcardSubdomains: ['test1']
       }
 
-      return request('one.test1.example.com')
-        .should
-        .eventually
-        .deep
-        .equal(expect)
+      return request('one.test1.example.com').should.eventually.deep.equal(expect)
     })
 
     it('match one.*.example.com', function () {
@@ -182,11 +146,7 @@ describe('测试路由匹配', function () {
         wildcardSubdomains: ['test2']
       }
 
-      return request('one.test2.example.com')
-        .should
-        .eventually
-        .deep
-        .equal(expect)
+      return request('one.test2.example.com').should.eventually.deep.equal(expect)
     })
   })
 
@@ -197,11 +157,7 @@ describe('测试路由匹配', function () {
         wildcardSubdomains: []
       }
 
-      return request('a.b.c.example.com')
-        .should
-        .eventually
-        .deep
-        .equal(expect)
+      return request('a.b.c.example.com').should.eventually.deep.equal(expect)
     })
   })
 
@@ -212,11 +168,7 @@ describe('测试路由匹配', function () {
         wildcardSubdomains: []
       }
 
-      return request('one.example.com:8080')
-        .should
-        .eventually
-        .deep
-        .equal(expect)
+      return request('one.example.com:8080').should.eventually.deep.equal(expect)
     })
   })
 })
@@ -230,24 +182,23 @@ describe('测试异常处理', function () {
     app.subdomainOffset = 2
     app.proxy = true
 
-    r.use('/', async () => {
-    });
+    r.use('/', async () => {})
 
-    (function () {
+    ;(function () {
       s.use(888, r.routes())
-    }).should.throw();
+    }.should.throw())
 
-    (function () {
+    ;(function () {
       s.use(r.routes())
-    }).should.throw();
+    }.should.throw())
 
-    (function () {
+    ;(function () {
       s.use(null, r.routes())
-    }).should.throw();
+    }.should.throw())
 
-    (function () {
+    ;(function () {
       s.use({}, r.routes())
-    }).should.throw()
+    }.should.throw())
   })
 
   it('测试 router 不合法', function () {
@@ -255,18 +206,18 @@ describe('测试异常处理', function () {
     let s = new Subdomain()
 
     app.subdomainOffset = 2
-    app.proxy = true;
+    app.proxy = true
 
-    (function () {
+    ;(function () {
       s.use('*', 1)
-    }).should.throw();
+    }.should.throw())
 
-    (function () {
+    ;(function () {
       s.use('*', 'router')
-    }).should.throw();
+    }.should.throw())
 
-    (function () {
+    ;(function () {
       s.use('*', false)
-    }).should.throw()
+    }.should.throw())
   })
 })
