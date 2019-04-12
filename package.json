@@ -1,6 +1,6 @@
 {
   "name": "koa-subdomain",
-  "version": "2.4.0",
+  "version": "3.0.0",
   "description": "Simple and lightweight Koa middleware to handle multilevel and wildcard subdomains",
   "main": "lib/subdomain.js",
   "scripts": {
@@ -26,6 +26,9 @@
   "files": [
     "lib"
   ],
+  "engines" : {
+    "node" : ">=8"
+  },
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.1.2",
