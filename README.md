@@ -1,6 +1,7 @@
 # koa-subdomain
 
 [![NPM version][npm-image]][npm-url]
+[![Node version][node-image]][node-url]
 [![Build Status][travis-image]][travis-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![npm download][download-image]][download-url]
@@ -155,6 +156,8 @@ npm test
 
 [npm-image]: https://img.shields.io/npm/v/koa-subdomain.svg?style=flat-square&maxAge=3600
 [npm-url]: https://www.npmjs.com/package/koa-subdomain
+[node-image]: https://img.shields.io/node/v/koa-subdomain.svg?style=flat-square&maxAge=3600
+[node-url]: https://nodejs.org
 [travis-image]: https://img.shields.io/travis/keenwon/koa-subdomain.svg?style=flat-square&maxAge=3600
 [travis-url]: https://travis-ci.org/keenwon/koa-subdomain
 [coveralls-image]: https://img.shields.io/coveralls/keenwon/koa-subdomain.svg?style=flat-square&maxAge=3600
