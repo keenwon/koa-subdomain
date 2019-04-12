@@ -33,7 +33,7 @@
     "coveralls": "^3.0.3",
     "elint": "^1.11.0",
     "elint-preset-kw": "^1.8.1",
-    "get-port": "^4.2.0",
+    "get-port": "^5.0.0",
     "koa": "^2.5.2",
     "koa-router": "^7.4.0",
     "mocha": "^6.1.3",
