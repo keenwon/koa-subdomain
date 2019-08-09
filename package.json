@@ -32,10 +32,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "conventional-changelog-cli": "^2.0.25",
-    "coveralls": "^3.0.7",
     "elint": "^2.0.0-alpha.3",
     "elint-preset-kw": "^1.8.1",
     "get-port": "^5.0.0",
@@ -43,7 +42,7 @@
     "koa-router": "^7.4.0",
     "mocha": "^6.2.2",
     "nyc": "^14.1.1",
-    "request": "^2.72.0"
+    "request": "^2.88.0"
   },
   "dependencies": {
     "debug": "^4.0.1"
