@@ -34,7 +34,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
-    "conventional-changelog-cli": "^2.0.23",
+    "conventional-changelog-cli": "^2.0.25",
     "coveralls": "^3.0.6",
     "elint": "^2.0.0-alpha.3",
     "elint-preset-kw": "^1.8.1",
