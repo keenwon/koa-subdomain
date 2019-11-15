@@ -2,7 +2,7 @@
 
 [![NPM version][npm-image]][npm-url]
 [![Node version][node-image]][node-url]
-[![Build Status][travis-image]][travis-url]
+[![Build Status][github-actions-image]][github-actions-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![npm download][download-image]][download-url]
 [![Dependencies Status][dependencies-image]][dependencies-url]
@@ -154,17 +154,17 @@ npm install
 npm test
 ```
 
-[npm-image]: https://img.shields.io/npm/v/koa-subdomain.svg?style=flat-square&maxAge=3600
+[npm-image]: https://img.shields.io/npm/v/koa-subdomain.svg
 [npm-url]: https://www.npmjs.com/package/koa-subdomain
-[node-image]: https://img.shields.io/node/v/koa-subdomain.svg?style=flat-square&maxAge=3600
+[node-image]: https://img.shields.io/node/v/koa-subdomain.svg
 [node-url]: https://nodejs.org
-[travis-image]: https://img.shields.io/travis/keenwon/koa-subdomain.svg?style=flat-square&maxAge=3600
-[travis-url]: https://travis-ci.org/keenwon/koa-subdomain
-[coveralls-image]: https://img.shields.io/coveralls/keenwon/koa-subdomain.svg?style=flat-square&maxAge=3600
-[coveralls-url]: https://coveralls.io/github/keenwon/koa-subdomain?branch=master
-[download-image]: https://img.shields.io/npm/dm/koa-subdomain.svg?style=flat-square&maxAge=3600
+[github-actions-image]: https://github.com/keenwon/koa-subdomain/workflows/unittest/badge.svg
+[github-actions-url]: https://github.com/keenwon/koa-subdomain/actions
+[coveralls-image]: https://img.shields.io/codecov/c/github/keenwon/koa-subdomain
+[coveralls-url]: https://codecov.io/gh/keenwon/koa-subdomain
+[download-image]: https://img.shields.io/npm/dm/koa-subdomain.svg
 [download-url]: https://npmjs.org/package/koa-subdomain
-[dependencies-image]: https://img.shields.io/david/keenwon/koa-subdomain.svg?maxAge=3600&style=flat-square
+[dependencies-image]: https://img.shields.io/david/keenwon/koa-subdomain.svg
 [dependencies-url]: https://david-dm.org/keenwon/koa-subdomain
-[devdependencies-image]: https://img.shields.io/david/dev/keenwon/koa-subdomain.svg?maxAge=3600&style=flat-square
+[devdependencies-image]: https://img.shields.io/david/dev/keenwon/koa-subdomain.svg
 [devdependencies-url]: https://david-dm.org/keenwon/koa-subdomain?type=dev
