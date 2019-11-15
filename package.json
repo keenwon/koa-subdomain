@@ -4,9 +4,10 @@
   "description": "Simple and lightweight Koa middleware to handle multilevel and wildcard subdomains",
   "main": "lib/subdomain.js",
   "scripts": {
-    "test:lint": "elint lint \"+(lib|test)/**/*.js\" --fix",
-    "test:unit": "nyc --reporter=html --reporter=text mocha \"test/**/*.js\" && nyc report --reporter=text-lcov | coveralls",
     "test": "npm run test:lint && npm run test:unit",
+    "test:lint": "elint lint \"+(lib|test)/**/*.js\" --fix",
+    "test:unit": "nyc --reporter=html --reporter=text mocha \"test/**/*.js\"",
+    "test:coverage": "nyc report --reporter=lcovonly",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "beforecommit": "elint lint commit && npm run test"
   },
